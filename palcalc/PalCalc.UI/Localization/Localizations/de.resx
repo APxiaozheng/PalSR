@@ -123,4 +123,10 @@
   <data name="LC_LANGUAGE" xml:space="preserve">
     <value>Sprache</value>
   </data>
+<data name="LC_COMMON_RENAME" xml:space="preserve">
+    <value>Umbenennen</value>
+  </data>
+  <data name="LC_COMMON_DELETE" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
 </root>

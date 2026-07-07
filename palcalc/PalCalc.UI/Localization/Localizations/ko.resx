@@ -905,4 +905,10 @@
   <data name="LC_WINDOW_TITLE" xml:space="preserve">
     <value>팰 계산기</value>
   </data>
+<data name="LC_COMMON_RENAME" xml:space="preserve">
+    <value>이름 변경</value>
+  </data>
+  <data name="LC_COMMON_DELETE" xml:space="preserve">
+    <value>삭제</value>
+  </data>
 </root>

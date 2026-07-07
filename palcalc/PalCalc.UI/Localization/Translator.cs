@@ -66,10 +66,13 @@ namespace PalCalc.UI.Localization
             {
                 currentLocale = value;
 
+                // Update DerivedLocalizableText (pal names, etc.) FIRST so that
+                // StoredLocalizableText (labels that depend on pal names) see the
+                // updated values when their Locale is set below.
+                LocaleUpdated?.Invoke();
+
                 foreach (var t in Translations.Values)
                     t.Locale = value;
-
-                LocaleUpdated?.Invoke();
             }
         }
 

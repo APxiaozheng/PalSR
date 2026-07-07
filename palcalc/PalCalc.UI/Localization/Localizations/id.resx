@@ -123,4 +123,10 @@
   <data name="LC_LANGUAGE" xml:space="preserve">
     <value>Bahasa</value>
   </data>
+<data name="LC_COMMON_RENAME" xml:space="preserve">
+    <value>Ganti Nama</value>
+  </data>
+  <data name="LC_COMMON_DELETE" xml:space="preserve">
+    <value>Hapus</value>
+  </data>
 </root>

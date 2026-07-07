@@ -112,6 +112,10 @@ namespace PalCalc.UI.Localization {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        LC_COMMON_DELETE,
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         LC_COMMON_ENABLED,
         /// <summary>
         ///   Looks up a localized string similar to .
@@ -193,6 +197,10 @@ namespace PalCalc.UI.Localization {
         ///   Looks up a localized string similar to .
         /// </summary>
         LC_COMMON_PALDEX_NUM_SHORT,
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        LC_COMMON_RENAME,
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>

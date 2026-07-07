@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows10.0.17763.0</TargetFramework>
     <UseWPF>true</UseWPF>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <FileVersion></FileVersion>
 	<DisableFody Condition="'$(Configuration)' != 'Release'">true</DisableFody>
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
