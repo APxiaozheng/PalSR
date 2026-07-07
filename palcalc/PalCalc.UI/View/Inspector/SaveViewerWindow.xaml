@@ -161,9 +161,11 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="2" Orientation="Horizontal" vu:StackPanelExtensions.Spacing="5">
-                    <Button Content="Reload Save" 
-                            Command="{Binding RefreshCommand}" 
-                            Width="100" />
+                    <Button Command="{Binding RefreshCommand}" 
+                            ToolTipService.ToolTip="{itl:LocalizedText LC_SAVE_FILE_RELOAD_DESCRIPTION}"
+                            Width="32" Height="24">
+                        <materialIcons:MaterialIcon Kind="Reload" Width="18" />
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>
@@ -542,13 +544,17 @@
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type sgvm:ContainerGridCustomPalSlotViewModel}">
                                 <StackPanel Margin="10" Background="{DynamicResource {x:Static adonisUi:Brushes.Layer3BackgroundBrush}}">
-                                    <TextBlock Text="Custom Pal" FontWeight="Bold" Margin="0,0,0,5" />
+                                    <TextBlock FontWeight="Bold" Margin="0,0,0,5">
+                                        <Run Text="{itl:LocalizedText LC_CUSTOM_CONTAINERS}" />
+                                    </TextBlock>
                                     <TextBlock>
-                                        <Run Text="Pal: " />
+                                        <Run Text="{itl:LocalizedText LC_COMMON_PAL}" />
+                                        <Run Text=": " />
                                         <Run Text="{Binding PalInstance.Pal.Name.Value, Mode=OneWay}" />
                                     </TextBlock>
                                     <TextBlock>
-                                        <Run Text="Gender: " />
+                                        <Run Text="{itl:LocalizedText LC_COMMON_GENDER}" />
+                                        <Run Text=": " />
                                         <Run Text="{Binding PalInstance.Gender.Label.Value, Mode=OneWay}" />
                                     </TextBlock>
                                 </StackPanel>
