@@ -1,0 +1,184 @@
+﻿<UserControl x:Class="PalCalc.UI.View.Inspector.SaveDetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PalCalc.UI.View.Inspector"
+             xmlns:ivm="clr-namespace:PalCalc.UI.ViewModel.Inspector"
+             xmlns:dvm="clr-namespace:PalCalc.UI.ViewModel.Inspector.Details"
+             xmlns:itl="clr-namespace:PalCalc.UI.Localization"
+             xmlns:c="clr-namespace:PalCalc.UI.ViewModel.Converters"
+             xmlns:v="clr-namespace:PalCalc.UI.View"
+             xmlns:vu="clr-namespace:PalCalc.UI.View.Utils"
+             xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+             xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+             xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
+             mc:Ignorable="d" 
+             d:DataContext="{x:Static ivm:SaveDetailsViewModel.DesignerInstance}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.Resources>
+            <c:ValueVisibilityConverter x:Key="VVC" />
+
+            <CollectionViewSource x:Key="GroupedContainers" Source="{Binding Containers}">
+                <CollectionViewSource.GroupDescriptions>
+                    <PropertyGroupDescription PropertyName="DisplayGroupName" />
+                </CollectionViewSource.GroupDescriptions>
+            </CollectionViewSource>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="149*" MinWidth="100" MaxWidth="400" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="651*" MinWidth="100" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="300*" MinWidth="100" MaxWidth="600" />
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.Column="0" ItemsSource="{Binding Source={StaticResource GroupedContainers}}" SelectedItem="{Binding SelectedContainer}" IsSynchronizedWithCurrentItem="True" adonisExtensions:ScrollViewerExtension.VerticalScrollBarExpansionMode="AlwaysExpand" HorizontalContentAlignment="Stretch">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="dvm:InspectedContainerDetailsViewModel">
+                    <StackPanel HorizontalAlignment="Stretch">
+                        <TextBlock HorizontalAlignment="Stretch">
+                            <Run Text="{itl:LocalizedText LC_SAVEINSPECT_CONTAINER_TYPE}" />
+                            <Run Text="{Binding Type.Value, Mode=OneTime}" />
+                        </TextBlock>
+                        <TextBlock Visibility="{Binding Owner, Mode=OneTime, Converter={StaticResource VVC}}">
+                            <Run Text="{itl:LocalizedText LC_SAVEINSPECT_CONTAINER_OWNER}" />
+                            <Run Text="{Binding Owner.Name.Value, Mode=OneTime}" />
+                        </TextBlock>
+                        <TextBlock>
+                            <Run Text="{Binding UsedSlots, Mode=OneTime}" />
+                            <Run>/</Run>
+                            <Run Text="{Binding TotalSlots, Mode=OneTime}" />
+                            <Run Text="{itl:LocalizedText LC_SAVEINSPECT_CONTAINER_SLOTS_USED}" />
+                        </TextBlock>
+                        <TextBlock Visibility="{Binding Id, Mode=OneTime, Converter={StaticResource VVC}}">
+                            <Run Text="{itl:LocalizedText LC_SAVEINSPECT_CONTAINER_ID}" />
+                            <Run Text="{Binding Id, Mode=OneTime}" />
+                        </TextBlock>
+
+                        <StackPanel Visibility="{Binding Coord, Converter={StaticResource VVC}}">
+                            <TextBlock>
+                                <Run Text="World Coords:" />
+                                <Run Text="{Binding Coord.WorldCoordsText, Mode=OneTime}" />
+                            </TextBlock>
+                            <TextBlock>
+                                <Run Text="Map Coords:" />
+                                <Run Text="{Binding Coord.DisplayCoordsText, Mode=OneTime}" />
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="GroupItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <StackPanel Margin="0,0,1,5">
+                                            <Label Content="{Binding Name}">
+                                                <Label.Style>
+                                                    <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+                                                        <Setter Property="Background" Value="{DynamicResource {x:Static adonisUi:Brushes.Layer2BorderBrush}}" />
+                                                        <Setter Property="Padding" Value="{adonisUi:Space 1,1}" />
+                                                    </Style>
+                                                </Label.Style>
+                                            </Label>
+
+                                            <ItemsPresenter HorizontalAlignment="Stretch" />
+                                        </StackPanel>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </ListBox.GroupStyle>
+        </ListBox>
+
+        <GridSplitter Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="5" Background="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}" />
+
+        <vu:CachingContentPresenter Grid.Column="2" Content="{Binding SelectedContainer}">
+            <vu:CachingContentPresenter.ContentTemplate>
+                <DataTemplate>
+                    <ListView ItemsSource="{Binding Slots}"
+                              SelectedItem="{Binding RelativeSource={RelativeSource AncestorType=local:SaveDetailsView}, Path=DataContext.SelectedSlot}"
+                              IsSynchronizedWithCurrentItem="True"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                              ItemContainerStyle="{StaticResource StandardListViewItemStyle}"
+                              >
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <vwp:VirtualizingWrapPanel SpacingMode="None" StretchItems="False" AllowDifferentSizedItems="True" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ContentControl Content="{Binding}" Margin="5">
+                                    <ContentControl.Resources>
+                                        <DataTemplate DataType="{x:Type dvm:EmptyPalContainerSlotDetailsViewModel}">
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{itl:LocalizedText LC_SAVEINSPECT_SLOT_EMPTY}" />
+                                        </DataTemplate>
+                                        <DataTemplate DataType="{x:Type dvm:PalContainerSlotDetailsViewModel}">
+                                            <StackPanel Orientation="Vertical">
+                                                <Image Source="{Binding Icon}" Width="50" Height="50" Margin="0,0,5,0" />
+                                                <TextBlock Text="{Binding DisplayName.Value}" HorizontalAlignment="Center" TextWrapping="Wrap" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ContentControl.Resources>
+                                </ContentControl>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </DataTemplate>
+            </vu:CachingContentPresenter.ContentTemplate>
+        </vu:CachingContentPresenter>
+
+        <GridSplitter Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="5" Background="{DynamicResource {x:Static adonisUi:Brushes.Layer1BorderBrush}}" />
+
+        <Grid Grid.Column="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <GroupBox Header="{itl:LocalizedText LC_SAVEINSPECT_DETECTED_PROPERTIES}" Grid.Row="0">
+                <DataGrid AutoGenerateColumns="False"
+                          HeadersVisibility="None"
+                          ItemsSource="{Binding SelectedSlotDetails.PalProperties}"
+                          IsReadOnly="True"
+                          VerticalScrollBarVisibility="Visible"
+                          HorizontalScrollBarVisibility="Disabled"
+                          >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="Auto" Binding="{Binding Key}" />
+                        <DataGridTextColumn Width="1*" Binding="{Binding Value}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+
+            <GridSplitter HorizontalAlignment="Stretch" Grid.Row="1" Height="5" />
+
+            <GroupBox Header="{itl:LocalizedText LC_SAVEINSPECT_RAW_PROPERTIES}" Grid.Row="2">
+                <DataGrid AutoGenerateColumns="False"
+                          HeadersVisibility="None"
+                          ItemsSource="{Binding SelectedSlotDetails.RawProperties}"
+                          IsReadOnly="True"
+                          VerticalScrollBarVisibility="Visible"
+                          HorizontalScrollBarVisibility="Disabled"
+                          >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="Auto" Binding="{Binding Key}" />
+                        <DataGridTextColumn Width="1*" Binding="{Binding Value}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</UserControl>

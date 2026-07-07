@@ -1,0 +1,145 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11205.157 d18.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PalCalc.Model", "PalCalc.Model\PalCalc.Model.csproj", "{378F5690-2B20-46AC-8557-F8CFF6B16F0F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PalCalc.SaveReader", "PalCalc.SaveReader\PalCalc.SaveReader.csproj", "{92892830-FC2F-40E6-8CD1-021E692F2A1C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PalCalc.GenDB", "PalCalc.GenDB\PalCalc.GenDB.csproj", "{FB5FDDEC-6ADA-404F-AFE3-42CA5DEB10A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PalCalc.Solver", "PalCalc.Solver\PalCalc.Solver.csproj", "{567FFDAB-38EE-49E6-85C8-7EEAC91AFBE5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PalCalc.SaveReader.CLI", "PalCalc.SaveReader.CLI\PalCalc.SaveReader.CLI.csproj", "{193E2B11-E76E-4202-A70A-FA48301FE0B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PalCalc.Solver.CLI", "PalCalc.Solver.CLI\PalCalc.Solver.CLI.csproj", "{33E48844-DC73-4187-9BFF-49E1BA371489}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PalCalc.UI", "PalCalc.UI\PalCalc.UI.csproj", "{2CB34AD8-2E22-45D6-AC9C-FDB2CC802363}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AF4D61ED-ADDA-405E-BC05-82579D17926F}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		Resources.Designer.t4 = Resources.Designer.t4
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphSharp", "GraphSharp\GraphSharp.csproj", "{916C2435-CB2F-4A53-87F7-FBF77E881F30}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphSharp.Controls", "GraphSharp.Controls\GraphSharp.Controls.csproj", "{4DF77F25-504A-4D48-8D05-09990BB6B85A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GraphSharp", "GraphSharp", "{B98DEFA3-C254-4B6D-B845-3535E2E049DA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetKit.Wpf.AutoCompleteComboBox", "DotNetKit.Wpf.AutoCompleteComboBox\DotNetKit.Wpf.AutoCompleteComboBox\DotNetKit.Wpf.AutoCompleteComboBox.csproj", "{B76DA379-784F-40FD-B531-BAE2A15C7C37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{6632E8CF-5B76-4E86-B394-E33E91C916EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalCalc.Solver.Tests", "PalCalc.Solver.Tests\PalCalc.Solver.Tests.csproj", "{97557646-1A65-436C-8B31-759BF9E514FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdonisUI", "AdonisUI", "{CAC9B710-E909-47A6-B7C5-5906AD0EA76A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdonisUI", "adonis-ui\src\AdonisUI\AdonisUI.csproj", "{FC5805CF-6E39-4C36-8ED4-66698E7F918C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdonisUI.ClassicTheme", "adonis-ui\src\AdonisUI.ClassicTheme\AdonisUI.ClassicTheme.csproj", "{D76C3C76-1021-40F9-8079-F122819F69E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release_NoBundle|x64 = Release_NoBundle|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{378F5690-2B20-46AC-8557-F8CFF6B16F0F}.Debug|x64.ActiveCfg = Debug|x64
+		{378F5690-2B20-46AC-8557-F8CFF6B16F0F}.Debug|x64.Build.0 = Debug|x64
+		{378F5690-2B20-46AC-8557-F8CFF6B16F0F}.Release_NoBundle|x64.ActiveCfg = Release|x64
+		{378F5690-2B20-46AC-8557-F8CFF6B16F0F}.Release_NoBundle|x64.Build.0 = Release|x64
+		{378F5690-2B20-46AC-8557-F8CFF6B16F0F}.Release|x64.ActiveCfg = Release|x64
+		{378F5690-2B20-46AC-8557-F8CFF6B16F0F}.Release|x64.Build.0 = Release|x64
+		{92892830-FC2F-40E6-8CD1-021E692F2A1C}.Debug|x64.ActiveCfg = Debug|x64
+		{92892830-FC2F-40E6-8CD1-021E692F2A1C}.Debug|x64.Build.0 = Debug|x64
+		{92892830-FC2F-40E6-8CD1-021E692F2A1C}.Release_NoBundle|x64.ActiveCfg = Release_NoBundle|x64
+		{92892830-FC2F-40E6-8CD1-021E692F2A1C}.Release_NoBundle|x64.Build.0 = Release_NoBundle|x64
+		{92892830-FC2F-40E6-8CD1-021E692F2A1C}.Release|x64.ActiveCfg = Release|x64
+		{92892830-FC2F-40E6-8CD1-021E692F2A1C}.Release|x64.Build.0 = Release|x64
+		{FB5FDDEC-6ADA-404F-AFE3-42CA5DEB10A8}.Debug|x64.ActiveCfg = Debug|x64
+		{FB5FDDEC-6ADA-404F-AFE3-42CA5DEB10A8}.Debug|x64.Build.0 = Debug|x64
+		{FB5FDDEC-6ADA-404F-AFE3-42CA5DEB10A8}.Release_NoBundle|x64.ActiveCfg = Release|x64
+		{FB5FDDEC-6ADA-404F-AFE3-42CA5DEB10A8}.Release_NoBundle|x64.Build.0 = Release|x64
+		{FB5FDDEC-6ADA-404F-AFE3-42CA5DEB10A8}.Release|x64.ActiveCfg = Release|x64
+		{FB5FDDEC-6ADA-404F-AFE3-42CA5DEB10A8}.Release|x64.Build.0 = Release|x64
+		{567FFDAB-38EE-49E6-85C8-7EEAC91AFBE5}.Debug|x64.ActiveCfg = Debug|x64
+		{567FFDAB-38EE-49E6-85C8-7EEAC91AFBE5}.Debug|x64.Build.0 = Debug|x64
+		{567FFDAB-38EE-49E6-85C8-7EEAC91AFBE5}.Release_NoBundle|x64.ActiveCfg = Release|x64
+		{567FFDAB-38EE-49E6-85C8-7EEAC91AFBE5}.Release_NoBundle|x64.Build.0 = Release|x64
+		{567FFDAB-38EE-49E6-85C8-7EEAC91AFBE5}.Release|x64.ActiveCfg = Release|x64
+		{567FFDAB-38EE-49E6-85C8-7EEAC91AFBE5}.Release|x64.Build.0 = Release|x64
+		{193E2B11-E76E-4202-A70A-FA48301FE0B4}.Debug|x64.ActiveCfg = Debug|x64
+		{193E2B11-E76E-4202-A70A-FA48301FE0B4}.Debug|x64.Build.0 = Debug|x64
+		{193E2B11-E76E-4202-A70A-FA48301FE0B4}.Release_NoBundle|x64.ActiveCfg = Release|x64
+		{193E2B11-E76E-4202-A70A-FA48301FE0B4}.Release_NoBundle|x64.Build.0 = Release|x64
+		{193E2B11-E76E-4202-A70A-FA48301FE0B4}.Release|x64.ActiveCfg = Release|x64
+		{193E2B11-E76E-4202-A70A-FA48301FE0B4}.Release|x64.Build.0 = Release|x64
+		{33E48844-DC73-4187-9BFF-49E1BA371489}.Debug|x64.ActiveCfg = Debug|x64
+		{33E48844-DC73-4187-9BFF-49E1BA371489}.Debug|x64.Build.0 = Debug|x64
+		{33E48844-DC73-4187-9BFF-49E1BA371489}.Release_NoBundle|x64.ActiveCfg = Release|x64
+		{33E48844-DC73-4187-9BFF-49E1BA371489}.Release_NoBundle|x64.Build.0 = Release|x64
+		{33E48844-DC73-4187-9BFF-49E1BA371489}.Release|x64.ActiveCfg = Release|x64
+		{33E48844-DC73-4187-9BFF-49E1BA371489}.Release|x64.Build.0 = Release|x64
+		{2CB34AD8-2E22-45D6-AC9C-FDB2CC802363}.Debug|x64.ActiveCfg = Debug|x64
+		{2CB34AD8-2E22-45D6-AC9C-FDB2CC802363}.Debug|x64.Build.0 = Debug|x64
+		{2CB34AD8-2E22-45D6-AC9C-FDB2CC802363}.Release_NoBundle|x64.ActiveCfg = Release_NoBundle|x64
+		{2CB34AD8-2E22-45D6-AC9C-FDB2CC802363}.Release_NoBundle|x64.Build.0 = Release_NoBundle|x64
+		{2CB34AD8-2E22-45D6-AC9C-FDB2CC802363}.Release|x64.ActiveCfg = Release|x64
+		{2CB34AD8-2E22-45D6-AC9C-FDB2CC802363}.Release|x64.Build.0 = Release|x64
+		{916C2435-CB2F-4A53-87F7-FBF77E881F30}.Debug|x64.ActiveCfg = Debug|x64
+		{916C2435-CB2F-4A53-87F7-FBF77E881F30}.Debug|x64.Build.0 = Debug|x64
+		{916C2435-CB2F-4A53-87F7-FBF77E881F30}.Release_NoBundle|x64.ActiveCfg = Release|x64
+		{916C2435-CB2F-4A53-87F7-FBF77E881F30}.Release_NoBundle|x64.Build.0 = Release|x64
+		{916C2435-CB2F-4A53-87F7-FBF77E881F30}.Release|x64.ActiveCfg = Release|x64
+		{916C2435-CB2F-4A53-87F7-FBF77E881F30}.Release|x64.Build.0 = Release|x64
+		{4DF77F25-504A-4D48-8D05-09990BB6B85A}.Debug|x64.ActiveCfg = Debug|x64
+		{4DF77F25-504A-4D48-8D05-09990BB6B85A}.Debug|x64.Build.0 = Debug|x64
+		{4DF77F25-504A-4D48-8D05-09990BB6B85A}.Release_NoBundle|x64.ActiveCfg = Release|x64
+		{4DF77F25-504A-4D48-8D05-09990BB6B85A}.Release_NoBundle|x64.Build.0 = Release|x64
+		{4DF77F25-504A-4D48-8D05-09990BB6B85A}.Release|x64.ActiveCfg = Release|x64
+		{4DF77F25-504A-4D48-8D05-09990BB6B85A}.Release|x64.Build.0 = Release|x64
+		{B76DA379-784F-40FD-B531-BAE2A15C7C37}.Debug|x64.ActiveCfg = Debug|x64
+		{B76DA379-784F-40FD-B531-BAE2A15C7C37}.Debug|x64.Build.0 = Debug|x64
+		{B76DA379-784F-40FD-B531-BAE2A15C7C37}.Release_NoBundle|x64.ActiveCfg = Release|x64
+		{B76DA379-784F-40FD-B531-BAE2A15C7C37}.Release_NoBundle|x64.Build.0 = Release|x64
+		{B76DA379-784F-40FD-B531-BAE2A15C7C37}.Release|x64.ActiveCfg = Release|x64
+		{B76DA379-784F-40FD-B531-BAE2A15C7C37}.Release|x64.Build.0 = Release|x64
+		{97557646-1A65-436C-8B31-759BF9E514FA}.Debug|x64.ActiveCfg = Debug|x64
+		{97557646-1A65-436C-8B31-759BF9E514FA}.Debug|x64.Build.0 = Debug|x64
+		{97557646-1A65-436C-8B31-759BF9E514FA}.Release_NoBundle|x64.ActiveCfg = Release|x64
+		{97557646-1A65-436C-8B31-759BF9E514FA}.Release_NoBundle|x64.Build.0 = Release|x64
+		{97557646-1A65-436C-8B31-759BF9E514FA}.Release|x64.ActiveCfg = Release|x64
+		{97557646-1A65-436C-8B31-759BF9E514FA}.Release|x64.Build.0 = Release|x64
+		{FC5805CF-6E39-4C36-8ED4-66698E7F918C}.Debug|x64.ActiveCfg = Debug|x64
+		{FC5805CF-6E39-4C36-8ED4-66698E7F918C}.Debug|x64.Build.0 = Debug|x64
+		{FC5805CF-6E39-4C36-8ED4-66698E7F918C}.Release_NoBundle|x64.ActiveCfg = Release|x64
+		{FC5805CF-6E39-4C36-8ED4-66698E7F918C}.Release_NoBundle|x64.Build.0 = Release|x64
+		{FC5805CF-6E39-4C36-8ED4-66698E7F918C}.Release|x64.ActiveCfg = Release|x64
+		{FC5805CF-6E39-4C36-8ED4-66698E7F918C}.Release|x64.Build.0 = Release|x64
+		{D76C3C76-1021-40F9-8079-F122819F69E9}.Debug|x64.ActiveCfg = Debug|x64
+		{D76C3C76-1021-40F9-8079-F122819F69E9}.Debug|x64.Build.0 = Debug|x64
+		{D76C3C76-1021-40F9-8079-F122819F69E9}.Release_NoBundle|x64.ActiveCfg = Release|x64
+		{D76C3C76-1021-40F9-8079-F122819F69E9}.Release_NoBundle|x64.Build.0 = Release|x64
+		{D76C3C76-1021-40F9-8079-F122819F69E9}.Release|x64.ActiveCfg = Release|x64
+		{D76C3C76-1021-40F9-8079-F122819F69E9}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{916C2435-CB2F-4A53-87F7-FBF77E881F30} = {B98DEFA3-C254-4B6D-B845-3535E2E049DA}
+		{4DF77F25-504A-4D48-8D05-09990BB6B85A} = {B98DEFA3-C254-4B6D-B845-3535E2E049DA}
+		{B98DEFA3-C254-4B6D-B845-3535E2E049DA} = {6632E8CF-5B76-4E86-B394-E33E91C916EE}
+		{B76DA379-784F-40FD-B531-BAE2A15C7C37} = {6632E8CF-5B76-4E86-B394-E33E91C916EE}
+		{CAC9B710-E909-47A6-B7C5-5906AD0EA76A} = {6632E8CF-5B76-4E86-B394-E33E91C916EE}
+		{FC5805CF-6E39-4C36-8ED4-66698E7F918C} = {CAC9B710-E909-47A6-B7C5-5906AD0EA76A}
+		{D76C3C76-1021-40F9-8079-F122819F69E9} = {CAC9B710-E909-47A6-B7C5-5906AD0EA76A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0171AB8C-D344-4A9B-BE99-146E847BFEFB}
+	EndGlobalSection
+EndGlobal

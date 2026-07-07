@@ -1,0 +1,375 @@
+﻿<StackPanel x:Class="PalCalc.UI.View.Main.PalTargetView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:local="clr-namespace:PalCalc.UI.View.Main"
+            xmlns:vm="clr-namespace:PalCalc.UI.ViewModel"
+            xmlns:mvm="clr-namespace:PalCalc.UI.ViewModel.Mapped"
+            xmlns:dnkc="clr-namespace:DotNetKit.Windows.Controls;assembly=DotNetKit.Wpf.AutoCompleteComboBox"
+            xmlns:itl="clr-namespace:PalCalc.UI.Localization"
+            xmlns:vu="clr-namespace:PalCalc.UI.View.Utils"
+            xmlns:c="clr-namespace:PalCalc.UI.ViewModel.Converters"
+            xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
+            xmlns:adonisExtensions="clr-namespace:AdonisUI.Extensions;assembly=AdonisUI"
+            xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+            vu:StackPanelExtensions.Spacing="8"
+            mc:Ignorable="d" 
+            d:DataContext="{d:DesignInstance vm:PalTargetViewModel, IsDesignTimeCreatable=True}"
+            d:DesignHeight="401.428" d:DesignWidth="842.441">
+    <StackPanel.Resources>
+        <DataTemplate x:Key="PassiveTemplate" DataType="{x:Type mvm:PassiveSkillViewModel}">
+            <TextBlock Text="{Binding Name.Value}" />
+        </DataTemplate>
+    </StackPanel.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" MinWidth="150" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="1*" MinWidth="100" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Label Content="{itl:LocalizedText LC_COMMON_PAL}" Style="{StaticResource ComboBoxAlignedLabelStyle}" />
+            <dnkc:AutoCompleteComboBox ItemsSource="{x:Static mvm:PalViewModel.All}" SelectedValue="{Binding CurrentPalSpecifier.TargetPal, Mode=TwoWay}" TextSearch.TextPath="Label.Value">
+                <dnkc:AutoCompleteComboBox.ItemTemplate>
+                    <DataTemplate DataType="vm:PalViewModel">
+                        <TextBlock Text="{Binding Label.Value}" />
+                    </DataTemplate>
+                </dnkc:AutoCompleteComboBox.ItemTemplate>
+            </dnkc:AutoCompleteComboBox>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <Label Content="{itl:LocalizedText Code=LC_COMMON_GENDER}" Style="{StaticResource ComboBoxAlignedLabelStyle}" />
+            <ComboBox ItemsSource="{x:Static mvm:PalGenderViewModel.AllStandard}" SelectedValue="{Binding CurrentPalSpecifier.RequiredGender}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="mvm:PalGenderViewModel">
+                        <TextBlock Text="{Binding Label.Value}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
+    <GroupBox adonisExtensions:LayerExtension.IncreaseLayer="False" Padding="0" Background="{x:Null}" Margin="0,5,0,0">
+        <GroupBox.Header>
+            <Grid adonisExtensions:LayerExtension.Layer="3">
+                <TextBlock Text="{itl:LocalizedText LC_COMMON_TRAITS}" Margin="8" />
+                <Grid HorizontalAlignment="Right">
+                    <Viewbox StretchDirection="DownOnly" Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Grid}}, Path=ActualHeight}">
+                        <Border Padding="3">
+                            <Button Command="{Binding OpenPassivesSearchCommand}" VerticalAlignment="Center" HorizontalAlignment="Right" adonisExtensions:LayerExtension.Layer="2">
+                                <materialIcons:MaterialIcon Kind="Search" />
+                            </Button>
+                        </Border>
+                    </Viewbox>
+                </Grid>
+            </Grid>
+        </GroupBox.Header>
+        <Grid>
+            <TabControl Margin="0" Padding="0" Background="{x:Null}">
+                <TabControl.Resources>
+                    <Style TargetType="dnkc:AutoCompleteComboBox" BasedOn="{StaticResource {x:Type dnkc:AutoCompleteComboBox}}">
+                        <Setter Property="ItemsSource" Value="{x:Static mvm:PassiveSkillViewModel.All}" />
+                        <Setter Property="ItemTemplate" Value="{StaticResource PassiveTemplate}" />
+                        <Setter Property="TextSearch.TextPath" Value="Name.Value" />
+                    </Style>
+
+                    <DataTemplate x:Key="ThinPassivesList" DataType="mvm:PalSpecifierPassiveSkillCollectionViewModel">
+                        <StackPanel vu:StackPanelExtensions.Spacing="5">
+                            <dnkc:AutoCompleteComboBox SelectedValue="{Binding Passive1, Mode=TwoWay}" />
+                            <dnkc:AutoCompleteComboBox SelectedValue="{Binding Passive2, Mode=TwoWay}" />
+                            <dnkc:AutoCompleteComboBox SelectedValue="{Binding Passive3, Mode=TwoWay}" />
+                            <dnkc:AutoCompleteComboBox SelectedValue="{Binding Passive4, Mode=TwoWay}" />
+                        </StackPanel>
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="WidePassivesList" DataType="mvm:PalSpecifierPassiveSkillCollectionViewModel">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+
+                            <dnkc:AutoCompleteComboBox SelectedValue="{Binding Passive1, Mode=TwoWay}" Grid.Row="0" Grid.Column="0" />
+                            <dnkc:AutoCompleteComboBox SelectedValue="{Binding Passive2, Mode=TwoWay}" Grid.Row="0" Grid.Column="2" />
+                            <dnkc:AutoCompleteComboBox SelectedValue="{Binding Passive3, Mode=TwoWay}" Grid.Row="2" Grid.Column="0" />
+                            <dnkc:AutoCompleteComboBox SelectedValue="{Binding Passive4, Mode=TwoWay}" Grid.Row="2" Grid.Column="2" />
+                        </Grid>
+                    </DataTemplate>
+
+                    <DataTemplate x:Key="ExtraWidePassivesList" DataType="mvm:PalSpecifierPassiveSkillCollectionViewModel">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+
+                            <dnkc:AutoCompleteComboBox SelectedValue="{Binding Passive1, Mode=TwoWay}" Grid.Column="0" />
+                            <dnkc:AutoCompleteComboBox SelectedValue="{Binding Passive2, Mode=TwoWay}" Grid.Column="2" />
+                            <dnkc:AutoCompleteComboBox SelectedValue="{Binding Passive3, Mode=TwoWay}" Grid.Column="4" />
+                            <dnkc:AutoCompleteComboBox SelectedValue="{Binding Passive4, Mode=TwoWay}" Grid.Column="6" />
+                        </Grid>
+                    </DataTemplate>
+
+                    <c:GreaterThanConverter x:Key="PassivesWideMode" MinValue="400" />
+                    <c:GreaterThanConverter x:Key="PassivesExtraWideMode" MinValue="800" />
+
+                    <Style TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
+                        <Setter Property="ContentTemplate" Value="{StaticResource ThinPassivesList}" />
+
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=ActualWidth, Converter={StaticResource PassivesWideMode}}" Value="True">
+                                <Setter Property="ContentTemplate" Value="{StaticResource WidePassivesList}" />
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=TabControl}, Path=ActualWidth, Converter={StaticResource PassivesExtraWideMode}}" Value="True">
+                                <Setter Property="ContentTemplate" Value="{StaticResource ExtraWidePassivesList}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TabControl.Resources>
+
+                <TabItem Header="{itl:LocalizedText LC_PAL_TARGET_REQUIRED_TRAITS}"
+                         adonisExtensions:LayerExtension.IncreaseLayer="False"
+                         Content="{Binding CurrentPalSpecifier.RequiredPassives}"
+                         />
+
+                <TabItem Header="{itl:LocalizedText LC_PAL_TARGET_OPTIONAL_TRAITS}"
+                         adonisExtensions:LayerExtension.IncreaseLayer="False"
+                         Content="{Binding CurrentPalSpecifier.OptionalPassives}"
+                         />
+            </TabControl>
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Height="Auto" Content="{itl:LocalizedText Code=LC_TRAITS_PRESETS}" x:Name="PresetsButton" Command="{Binding OpenPresetsMenuCommand}" Margin="0,2,0,0">
+            </Button>
+            <Popup PlacementTarget="{Binding ElementName=PresetsButton}"
+                   x:Name="PresetsPopup"
+                   IsOpen="{Binding PresetsMenuIsOpen}"
+                   StaysOpen="False"
+                   MinWidth="200"
+                   >
+                <vu:EditableListMenu DataContext="{Binding Presets}"
+                                     CreateCommand="{Binding CreatePresetCommand}"
+                                     DeleteCommand="{Binding DeletePresetCommand}"
+                                     RenameCommand="{Binding RenamePresetCommand}"
+                                     OverwriteCommand="{Binding OverwritePresetCommand}"
+                                     SelectCommand="{Binding SelectPresetCommand}"
+                                     
+                                     DeleteButtonTooltip="{itl:LocalizedText Code=LC_TRAITS_PRESETS_DELETE_BTN_DESCRIPTION}"
+                                     RenameButtonTooltip="{itl:LocalizedText Code=LC_TRAITS_PRESETS_RENAME_BTN_DESCRIPTION}"
+                                     OverwriteButtonTooltip="{itl:LocalizedText Code=LC_TRAITS_PRESETS_OVERWRITE_BTN_DESCRIPTION}"
+                                     
+                                     CreatePopupTitle="{itl:LocalizedText Code=LC_TRAITS_PRESETS_ADD_TITLE}"
+                                     CreatePopupInputLabel="{itl:LocalizedText Code=LC_TRAITS_PRESETS_NAME}"
+                                     
+                                     ItemsSource="{Binding Options}"
+                                     
+                                     Background="{DynamicResource {x:Static adonisUi:Brushes.Layer1BackgroundBrush}}"
+                                     BorderBrush="{DynamicResource {x:Static adonisUi:Brushes.AccentInteractionBorderBrush}}"
+                                     BorderThickness="1"
+                                     adonisExtensions:LayerExtension.Layer="1"
+                                     >
+                    <vu:EditableListMenu.NewItemContent>
+                        <Grid>
+                            <TextBlock Margin="5" FontStyle="Italic" Text="{itl:LocalizedText Code=LC_TRAITS_PRESETS_ADD}" />
+                        </Grid>
+                    </vu:EditableListMenu.NewItemContent>
+                </vu:EditableListMenu>
+            </Popup>
+        </Grid>
+    </GroupBox>
+    <GroupBox Header="{itl:LocalizedText Code=LC_COMMON_IVS}" adonisExtensions:LayerExtension.IncreaseLayer="False" Background="{x:Null}" Margin="0,5,0,0">
+        <GroupBox.Resources>
+            <c:GreaterThanConverter x:Key="IVWideMode" MinValue="300" />
+
+            <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="MaxIvLabel" BasedOn="{StaticResource {x:Type Label}}">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static adonisUi:Brushes.DisabledForegroundBrush}}" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="ContentStringFormat" Value="({0})" />
+                <Setter Property="Grid.Column" Value="2" />
+            </Style>
+
+            <DataTemplate x:Key="IVThinTemplate" DataType="vm:PalTargetViewModel">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="3" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="3" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="{itl:LocalizedText Code=LC_COMMON_IV_HP}" />
+                    <vu:IntegerTextBox Grid.Row="0" Grid.Column="1" Value="{Binding CurrentPalSpecifier.MinIv_HP, Mode=TwoWay}" MinValue="0" MaxValue="100" />
+                    <Label Grid.Row="0" Content="{Binding CurrentPalSpecifier.MaxIv_HP, FallbackValue=0}">
+                        <Label.Style>
+                            <Style TargetType="Label" BasedOn="{StaticResource MaxIvLabel}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CurrentPalSpecifier.Iv_HP_IsValid, FallbackValue=True}" Value="False">
+                                        <Setter Property="Foreground" Value="IndianRed" />
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="{itl:LocalizedText Code=LC_COMMON_IV_ATTACK}" />
+                    <vu:IntegerTextBox Grid.Row="2" Grid.Column="1" Value="{Binding CurrentPalSpecifier.MinIv_Attack, Mode=TwoWay}" MinValue="0" MaxValue="100" />
+                    <Label Grid.Row="2" Content="{Binding CurrentPalSpecifier.MaxIv_Attack, FallbackValue=0}">
+                        <Label.Style>
+                            <Style TargetType="Label" BasedOn="{StaticResource MaxIvLabel}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CurrentPalSpecifier.Iv_Attack_IsValid, FallbackValue=True}" Value="False">
+                                        <Setter Property="Foreground" Value="IndianRed" />
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+
+                    <Label Grid.Row="4" Grid.Column="0" Content="{itl:LocalizedText Code=LC_COMMON_IV_DEFENSE}" />
+                    <vu:IntegerTextBox Grid.Row="4" Grid.Column="1" Value="{Binding CurrentPalSpecifier.MinIv_Defense, Mode=TwoWay}" MinValue="0" MaxValue="100" />
+                    <Label Grid.Row="4" Content="{Binding CurrentPalSpecifier.MaxIv_Defense, FallbackValue=0}">
+                        <Label.Style>
+                            <Style TargetType="Label" BasedOn="{StaticResource MaxIvLabel}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding CurrentPalSpecifier.Iv_Defense_IsValid, FallbackValue=True}" Value="False">
+                                        <Setter Property="Foreground" Value="IndianRed" />
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="IVWideTemplate" DataType="vm:PalTargetViewModel">
+                <Grid>
+                    <Grid.Resources>
+                        <GridLength x:Key="IVSpacing">15</GridLength>
+                        <GridLength x:Key="Spacing">5</GridLength>
+                        <GridLength x:Key="ShortSpacing">3</GridLength>
+                    </Grid.Resources>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="{StaticResource IVSpacing}" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="{StaticResource IVSpacing}" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="{StaticResource Spacing}" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="{StaticResource ShortSpacing}" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Content="{itl:LocalizedText Code=LC_COMMON_IV_HP_SHORT}" />
+                        <vu:IntegerTextBox Grid.Column="2" Value="{Binding CurrentPalSpecifier.MinIv_HP, Mode=TwoWay}" MinValue="0" MaxValue="100" />
+                        <Label Grid.Column="4" Content="{Binding CurrentPalSpecifier.MaxIv_HP, FallbackValue=0}">
+                            <Label.Style>
+                                <Style TargetType="Label" BasedOn="{StaticResource MaxIvLabel}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding CurrentPalSpecifier.Iv_HP_IsValid, FallbackValue=True}" Value="False">
+                                            <Setter Property="Foreground" Value="IndianRed" />
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </Grid>
+
+                    <Grid Grid.Column="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="{StaticResource Spacing}" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="{StaticResource ShortSpacing}" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Content="{itl:LocalizedText Code=LC_COMMON_IV_ATTACK_SHORT}" />
+                        <vu:IntegerTextBox Grid.Column="2" Value="{Binding CurrentPalSpecifier.MinIv_Attack, Mode=TwoWay}" MinValue="0" MaxValue="100" />
+                        <Label Grid.Column="4" Content="{Binding CurrentPalSpecifier.MaxIv_Attack, FallbackValue=0}">
+                            <Label.Style>
+                                <Style TargetType="Label" BasedOn="{StaticResource MaxIvLabel}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding CurrentPalSpecifier.Iv_Attack_IsValid, FallbackValue=True}" Value="False">
+                                            <Setter Property="Foreground" Value="IndianRed" />
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </Grid>
+
+                    <Grid Grid.Column="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="{StaticResource Spacing}" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="{StaticResource ShortSpacing}" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Content="{itl:LocalizedText Code=LC_COMMON_IV_DEFENSE_SHORT}" />
+                        <vu:IntegerTextBox Grid.Column="2" Value="{Binding CurrentPalSpecifier.MinIv_Defense, Mode=TwoWay}" MinValue="0" MaxValue="100" />
+                        <Label Grid.Column="4" Content="{Binding CurrentPalSpecifier.MaxIv_Defense, FallbackValue=0}">
+                            <Label.Style>
+                                <Style TargetType="Label" BasedOn="{StaticResource MaxIvLabel}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding CurrentPalSpecifier.Iv_Defense_IsValid, FallbackValue=True}" Value="False">
+                                            <Setter Property="Foreground" Value="IndianRed" />
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </GroupBox.Resources>
+
+        <ContentControl DataContext="{Binding}" Content="{Binding}">
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
+                    <Setter Property="ContentTemplate" Value="{StaticResource IVThinTemplate}" />
+
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth, Converter={StaticResource IVWideMode}}" Value="True">
+                            <Setter Property="ContentTemplate" Value="{StaticResource IVWideTemplate}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+    </GroupBox>
+</StackPanel>

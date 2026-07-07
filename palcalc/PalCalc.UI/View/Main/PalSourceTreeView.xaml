@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="PalCalc.UI.View.Main.PalSourceTreeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PalCalc.UI.View"
+             xmlns:vm="clr-namespace:PalCalc.UI.ViewModel"
+             xmlns:vms="clr-namespace:PalCalc.UI.ViewModel.Solver"
+             xmlns:mvm="clr-namespace:PalCalc.UI.ViewModel.Mapped"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance vms:PalSourceTreeViewModel, IsDesignTimeCreatable=True}"
+             >
+    <TreeView ItemsSource="{Binding RootNodes}" BorderBrush="{x:Null}">
+        <TreeView.ItemContainerStyle>
+            <!-- explicitly reference Adonis style, doesn't work properly without this for some reason -->
+            <Style TargetType="TreeViewItem" BasedOn="{StaticResource TreeViewItemStyle}">
+                <Setter Property="IsExpanded" Value="True" />
+                <Setter Property="Focusable" Value="False" />
+
+                <!-- (reapply fix for XAML binding errors from App.xaml) -->
+                <Setter Property="HorizontalContentAlignment" Value="Left" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+
+                <EventSetter Event="MouseDown" Handler="TreeViewItem_MouseDown" />
+                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="TreeViewItem_PreviewMouseLeftButtonDown" />
+            </Style>
+        </TreeView.ItemContainerStyle>
+        <TreeView.Resources>
+            <Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}">
+                <Setter Property="IsChecked" Value="{Binding IsChecked}" />
+            </Style>
+
+            <HierarchicalDataTemplate DataType="{x:Type vms:GuildSourceTreeNodeViewModel}" ItemsSource="{Binding Children}">
+                <CheckBox>
+                    <TextBlock Text="{Binding Label.Value}" />
+                </CheckBox>
+            </HierarchicalDataTemplate>
+
+            <DataTemplate DataType="{x:Type vms:PlayerSourceTreeNodeViewModel}">
+                <CheckBox>
+                    <TextBlock Text="{Binding Label.Value}" />
+                </CheckBox>
+            </DataTemplate>
+        </TreeView.Resources>
+    </TreeView>
+</UserControl>

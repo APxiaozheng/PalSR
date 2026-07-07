@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<CETCompat>false</CETCompat>
+	<Platforms>x64</Platforms> <!-- https://github.com/tylercamp/palcalc/issues/85 -->
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Optimize>False</Optimize>
+    <DefineConstants>$(DefineConstants);XDEBUG_CHECKS</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PalCalc.Model\PalCalc.Model.csproj" />
+  </ItemGroup>
+
+</Project>

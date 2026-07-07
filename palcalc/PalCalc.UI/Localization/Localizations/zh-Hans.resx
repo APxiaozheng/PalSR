@@ -1,0 +1,763 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LC_ABOUT_APP" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="LC_ADD_FAKE_SAVE" xml:space="preserve">
+    <value>添加虚拟存档...</value>
+  </data>
+  <data name="LC_ADD_NEW_SAVE" xml:space="preserve">
+    <value>添加新的存档...</value>
+  </data>
+  <data name="LC_ANY_GUILD" xml:space="preserve">
+    <value>任何公会</value>
+  </data>
+  <data name="LC_ANY_PLAYER" xml:space="preserve">
+    <value>任何玩家</value>
+  </data>
+  <data name="LC_BASE_ASSIGNED_LABEL" xml:space="preserve">
+    <value>放置到据点</value>
+  </data>
+  <data name="LC_BASE_LABEL" xml:space="preserve">
+    <value>据点 ({BaseName})</value>
+  </data>
+  <data name="LC_BREEDING_TIME" xml:space="preserve">
+    <value>产蛋时间 (秒)</value>
+  </data>
+  <data name="LC_BREEDING_TIME_DESC" xml:space="preserve">
+    <value>产生帕鲁蛋的平均用时。用于目标帕鲁繁殖耗时的计算。
+如果帕鲁晚上睡觉，下蛋用时自动计算为两倍</value>
+  </data>
+  <data name="LC_COMMON_ALL_ATTACK_SKILLS" xml:space="preserve">
+    <value>所有主动技能</value>
+  </data>
+  <data name="LC_COMMON_ATTACK_SKILLS" xml:space="preserve">
+    <value>主动技能</value>
+  </data>
+  <data name="LC_COMMON_CANCEL" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="LC_COMMON_ENABLED" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="LC_COMMON_EQUIPPED_ATTACK_SKILLS" xml:space="preserve">
+    <value>装备的主动技能</value>
+  </data>
+  <data name="LC_COMMON_GENDER" xml:space="preserve">
+    <value>性别</value>
+  </data>
+  <data name="LC_COMMON_GENDER_FEMALE" xml:space="preserve">
+    <value>雌性</value>
+  </data>
+  <data name="LC_COMMON_GENDER_MALE" xml:space="preserve">
+    <value>雄性</value>
+  </data>
+  <data name="LC_COMMON_GENDER_NONE" xml:space="preserve">
+    <value>无性别</value>
+  </data>
+  <data name="LC_COMMON_GENDER_OPPOSITE_WILDCARD" xml:space="preserve">
+    <value>另一性别</value>
+  </data>
+  <data name="LC_COMMON_GENDER_WILDCARD" xml:space="preserve">
+    <value>不限性别</value>
+  </data>
+  <data name="LC_COMMON_IVS" xml:space="preserve">
+    <value>个体值</value>
+  </data>
+  <data name="LC_COMMON_IV_ATTACK" xml:space="preserve">
+    <value>攻击</value>
+  </data>
+  <data name="LC_COMMON_IV_ATTACK_SHORT" xml:space="preserve">
+    <value>攻击</value>
+  </data>
+  <data name="LC_COMMON_IV_DEFENSE" xml:space="preserve">
+    <value>防御</value>
+  </data>
+  <data name="LC_COMMON_IV_DEFENSE_SHORT" xml:space="preserve">
+    <value>防御</value>
+  </data>
+  <data name="LC_COMMON_IV_HP" xml:space="preserve">
+    <value>HP</value>
+  </data>
+  <data name="LC_COMMON_IV_HP_SHORT" xml:space="preserve">
+    <value>HP</value>
+  </data>
+  <data name="LC_COMMON_LEVEL" xml:space="preserve">
+    <value>等级</value>
+  </data>
+  <data name="LC_COMMON_PAL" xml:space="preserve">
+    <value>帕鲁</value>
+  </data>
+  <data name="LC_COMMON_PALDEX_NUM_SHORT" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="LC_COMMON_SAVE" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="LC_COMMON_TRAITS" xml:space="preserve">
+    <value>词条</value>
+  </data>
+  <data name="LC_COMMON_UNKNOWN" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="LC_CRASHLOG_FAILED" xml:space="preserve">
+    <value>无法创建崩溃日志文件。</value>
+  </data>
+  <data name="LC_CUSTOM_CONTAINER" xml:space="preserve">
+    <value>{Label} (自定义)</value>
+  </data>
+  <data name="LC_CUSTOM_CONTAINERS" xml:space="preserve">
+    <value>自定义帕鲁盒</value>
+  </data>
+  <data name="LC_CUSTOM_CONTAINERS_DESCRIPTION" xml:space="preserve">
+    <value>内容修改自动保存在Pal Calc。自定义帕鲁盒不会影响Palworld存档。</value>
+  </data>
+  <data name="LC_CUSTOM_CONTAINER_ADD_NEW" xml:space="preserve">
+    <value>新建...</value>
+  </data>
+  <data name="LC_CUSTOM_CONTAINER_NEW_FIELD" xml:space="preserve">
+    <value>命名</value>
+  </data>
+  <data name="LC_CUSTOM_CONTAINER_NEW_TITLE" xml:space="preserve">
+    <value>新的自定义帕鲁盒</value>
+  </data>
+  <data name="LC_CUSTOM_CONTAINER_RENAME_FIELD" xml:space="preserve">
+    <value>命名</value>
+  </data>
+  <data name="LC_CUSTOM_CONTAINER_RENAME_TITLE" xml:space="preserve">
+    <value>重命名自定义帕鲁盒</value>
+  </data>
+  <data name="LC_CUSTOM_SAVE_GAME_NAME" xml:space="preserve">
+    <value>新的虚拟存档名</value>
+  </data>
+  <data name="LC_CUSTOM_SAVE_GAME_NAME_LABEL" xml:space="preserve">
+    <value>命名</value>
+  </data>
+  <data name="LC_DELETE_PAL_TARGET_MSG" xml:space="preserve">
+    <value>删除{PalName}的搜索结果？</value>
+  </data>
+  <data name="LC_DELETE_PAL_TARGET_TITLE" xml:space="preserve">
+    <value>删除目标帕鲁</value>
+  </data>
+  <data name="LC_ERROR_HARD_CRASH" xml:space="preserve">
+    <value>发生未处理的错误。
+
+可以找到生成的zip文件用于发送求助报告:
+
+{CrashlogPath}</value>
+  </data>
+  <data name="LC_ERROR_SAVE_LOAD_FAILED" xml:space="preserve">
+    <value>加载存档时发生错误。
+
+如果是新版游戏的存档，请尝试升级Pal Calc。
+
+旧版的存档可能不再支持，请使用之前版本的Pal Calc。
+
+可以找到生成的zip文件用于发送求助报告:
+
+{CrashlogPath}</value>
+  </data>
+  <data name="LC_EXPORT_CRASH_LOG" xml:space="preserve">
+    <value>导出崩溃日志</value>
+  </data>
+  <data name="LC_EXPORT_CRASH_LOG_DESCRIPTION" xml:space="preserve">
+    <value>导出最近访问的存档、缓存和设置参数为一个zip压缩包。</value>
+  </data>
+  <data name="LC_EXPORT_SAVE" xml:space="preserve">
+    <value>导出存档</value>
+  </data>
+  <data name="LC_EXPORT_SAVE_DESCRIPTION" xml:space="preserve">
+    <value>导出选中存档的全部已知文件为一个zip压缩包。</value>
+  </data>
+  <data name="LC_GAME_SETTINGS" xml:space="preserve">
+    <value>游戏设置</value>
+  </data>
+  <data name="LC_GRAPH_ZOOM_CUSTOM" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="LC_GRAPH_ZOOM_FILL" xml:space="preserve">
+    <value>适合窗口</value>
+  </data>
+  <data name="LC_GRAPH_ZOOM_PERCENT" xml:space="preserve">
+    <value>缩放:</value>
+  </data>
+  <data name="LC_GUILD_LABEL" xml:space="preserve">
+    <value>公会 '{GuildName}'</value>
+  </data>
+  <data name="LC_INCLUDE_CUSTOM_PALS" xml:space="preserve">
+    <value>使用自定义帕鲁盒</value>
+  </data>
+  <data name="LC_INCLUDE_PALS_AT_BASE" xml:space="preserve">
+    <value>使用据点内帕鲁</value>
+  </data>
+  <data name="LC_INCLUDE_PALS_IN_CAGES" xml:space="preserve">
+    <value>使用观赏笼帕鲁</value>
+  </data>
+  <data name="LC_INSPECT_SAVE" xml:space="preserve">
+    <value>详细查看</value>
+  </data>
+  <data name="LC_ITL_LABEL" xml:space="preserve">
+    <value>中文 (简体)</value>
+  </data>
+  <data name="LC_LANGUAGE" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="LC_LANG_CHANGED_RESTART" xml:space="preserve">
+    <value>需要重启Pal Calc使语言设置生效。</value>
+  </data>
+  <data name="LC_LIST_SEPARATOR" xml:space="preserve">
+    <value>，</value>
+  </data>
+  <data name="LC_LOC_COORD_BASE" xml:space="preserve">
+    <value>据点内, ({X}列,{Y}排)</value>
+  </data>
+  <data name="LC_LOC_COORD_PALBOX" xml:space="preserve">
+    <value>帕鲁终端，第{Tab}页 ({X}列,{Y}排)</value>
+  </data>
+  <data name="LC_LOC_COORD_PARTY" xml:space="preserve">
+    <value>队伍中第{SlotNum}格</value>
+  </data>
+  <data name="LC_LOC_COORD_VIEWING_CAGE" xml:space="preserve">
+    <value>观赏笼 ({X}列,{Y}排)</value>
+  </data>
+  <data name="LC_LOC_OWNED_BY" xml:space="preserve">
+    <value>主人 {Owner}</value>
+  </data>
+  <data name="LC_LOC_PALBOX_TAB" xml:space="preserve">
+    <value>第{Tab}页</value>
+  </data>
+  <data name="LC_MANUAL_SAVE_ALREADY_REGISTERED" xml:space="preserve">
+    <value>选中的文件不能重复添加。</value>
+  </data>
+  <data name="LC_MANUAL_SAVE_EXTENSION_LBL" xml:space="preserve">
+    <value>Level存档文件</value>
+  </data>
+  <data name="LC_MANUAL_SAVE_INCOMPLETE" xml:space="preserve">
+    <value>选中的文件不是完整的存档目录</value>
+  </data>
+  <data name="LC_MANUAL_SAVE_SELECTOR_TITLE" xml:space="preserve">
+    <value>选择文件夹中'Level.sav'存档文件</value>
+  </data>
+  <data name="LC_MEMORY_WARNING_MSG" xml:space="preserve">
+    <value>注意：由于系统内存不足，求解程序暂停。此消息关闭后，工作将恢复。
+
+本次求解过程中，忽略剩余全部警告？</value>
+  </data>
+  <data name="LC_MEMORY_WARNING_TITLE" xml:space="preserve">
+    <value>内存警告！</value>
+  </data>
+  <data name="LC_MULTIPLE_BREEDING_FARMS" xml:space="preserve">
+    <value>多个配种牧场</value>
+  </data>
+  <data name="LC_MULTIPLE_BREEDING_FARMS_DESC" xml:space="preserve">
+    <value>是否使用多个配种牧场。
+启用后，目标帕鲁的估计繁殖时间取决于父母帕鲁孵化最长时间的一方。
+不启用，目标帕鲁的估计繁殖时间是父母帕鲁孵化时间的和。</value>
+  </data>
+  <data name="LC_NEW_TARGET_PAL" xml:space="preserve">
+    <value>新搜索</value>
+  </data>
+  <data name="LC_NO_RESULTS_FAQ_1" xml:space="preserve">
+    <value>没有找到结果？看一下</value>
+  </data>
+  <data name="LC_NO_RESULTS_FAQ_2" xml:space="preserve">
+    <value>常见问题</value>
+  </data>
+  <data name="LC_NO_RESULTS_FAQ_3" xml:space="preserve">
+    <value>以排除原因</value>
+  </data>
+  <data name="LC_NO_TRAITS" xml:space="preserve">
+    <value>无词条</value>
+  </data>
+  <data name="LC_OPEN_IN_FILE_EXPLORER" xml:space="preserve">
+    <value>打开文件浏览器</value>
+  </data>
+  <data name="LC_OPTIONAL_TRAITS_SUMMARY" xml:space="preserve">
+    <value>可选配{TraitsList}</value>
+  </data>
+  <data name="LC_PAL_CHECKLIST_SEARCH" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="LC_PAL_LABEL" xml:space="preserve">
+    <value>{PalName} (#{PaldexNum})</value>
+  </data>
+  <data name="LC_PAL_LOC_BASE" xml:space="preserve">
+    <value>据点</value>
+  </data>
+  <data name="LC_PAL_LOC_CAPTURED" xml:space="preserve">
+    <value>野外捕获</value>
+  </data>
+  <data name="LC_PAL_LOC_COUNT" xml:space="preserve">
+    <value>{Count}只来自{LocType}</value>
+  </data>
+  <data name="LC_PAL_LOC_CUSTOM" xml:space="preserve">
+    <value>(自定义)</value>
+  </data>
+  <data name="LC_PAL_LOC_PALBOX" xml:space="preserve">
+    <value>帕鲁终端</value>
+  </data>
+  <data name="LC_PAL_LOC_PARTY" xml:space="preserve">
+    <value>队伍</value>
+  </data>
+  <data name="LC_PAL_LOC_VIEWING_CAGE" xml:space="preserve">
+    <value>观赏笼</value>
+  </data>
+  <data name="LC_PAL_SRC_ANY_GUILD_MEMBER" xml:space="preserve">
+    <value>任何公会成员</value>
+  </data>
+  <data name="LC_PAL_SRC_ANY_PLAYER_GUILD" xml:space="preserve">
+    <value>任何公会中的任何玩家</value>
+  </data>
+  <data name="LC_PAL_TARGET_OPTIONAL_TRAITS" xml:space="preserve">
+    <value>可附带</value>
+  </data>
+  <data name="LC_PAL_TARGET_REQUIRED_TRAITS" xml:space="preserve">
+    <value>必须包含</value>
+  </data>
+  <data name="LC_PAL_WILD_COUNT" xml:space="preserve">
+    <value>{NumWild}只野外捕获</value>
+  </data>
+  <data name="LC_PLAYER_LABEL" xml:space="preserve">
+    <value>玩家'{PlayerName}'</value>
+  </data>
+  <data name="LC_POPUP_TITLE_LOADING_SAVE_FILE" xml:space="preserve">
+    <value>加载存档中</value>
+  </data>
+  <data name="LC_RANDOM_TRAIT" xml:space="preserve">
+    <value>(随机)</value>
+  </data>
+  <data name="LC_REMOVE_CUSTOM_CONTAINER_DESCRIPTION" xml:space="preserve">
+    <value>将删除自定义帕鲁盒'{Label}'</value>
+  </data>
+  <data name="LC_REMOVE_SAVE_DESCRIPTION" xml:space="preserve">
+    <value>确认从Pal Calc移除此存档吗？
+
+{SaveLabel}
+
+此操作不会删除计算机中实际的存档文件。</value>
+  </data>
+  <data name="LC_REMOVE_SAVE_TITLE" xml:space="preserve">
+    <value>移除手动存档？</value>
+  </data>
+  <data name="LC_REQUIRED_TRAITS_SUMMARY" xml:space="preserve">
+    <value>带有{TraitsList}</value>
+  </data>
+  <data name="LC_RESULT_BREEDING_ATTEMPTS" xml:space="preserve">
+    <value>{AvgAttempts}次抽选</value>
+  </data>
+  <data name="LC_RESULT_INPUT_LOCS" xml:space="preserve">
+    <value>帕鲁来源</value>
+  </data>
+  <data name="LC_RESULT_IV_ATTACK" xml:space="preserve">
+    <value>攻击个体值</value>
+  </data>
+  <data name="LC_RESULT_IV_AVERAGE" xml:space="preserve">
+    <value>平均个体值</value>
+  </data>
+  <data name="LC_RESULT_IV_DEFENSE" xml:space="preserve">
+    <value>防御个体值</value>
+  </data>
+  <data name="LC_RESULT_IV_HP" xml:space="preserve">
+    <value>HP个体值</value>
+  </data>
+  <data name="LC_RESULT_LABEL" xml:space="preserve">
+    <value>{PalName}带有{TraitsList}, 耗时~{TimeEstimate}</value>
+  </data>
+  <data name="LC_RESULT_LIST_TITLE_COUNT" xml:space="preserve">
+    <value>{NumResults}个结果</value>
+  </data>
+  <data name="LC_RESULT_LIST_TITLE_EMPTY" xml:space="preserve">
+    <value>结果</value>
+  </data>
+  <data name="LC_RESULT_NUM_CAKES" xml:space="preserve">
+    <value>蛋糕量</value>
+  </data>
+  <data name="LC_RESULT_NUM_STEPS" xml:space="preserve">
+    <value>代数</value>
+  </data>
+  <data name="LC_RESULT_TIME_ESTIMATE" xml:space="preserve">
+    <value>用时</value>
+  </data>
+  <data name="LC_SAVEINSPECT_CONTAINER_ID" xml:space="preserve">
+    <value>ID:</value>
+  </data>
+  <data name="LC_SAVEINSPECT_CONTAINER_OWNER" xml:space="preserve">
+    <value>主人:</value>
+  </data>
+  <data name="LC_SAVEINSPECT_CONTAINER_SLOTS_USED" xml:space="preserve">
+    <value>格子占用</value>
+  </data>
+  <data name="LC_SAVEINSPECT_CONTAINER_TYPE" xml:space="preserve">
+    <value>类型:</value>
+  </data>
+  <data name="LC_SAVEINSPECT_DETECTED_PROPERTIES" xml:space="preserve">
+    <value>识别的属性</value>
+  </data>
+  <data name="LC_SAVEINSPECT_RAW_PROPERTIES" xml:space="preserve">
+    <value>原始属性</value>
+  </data>
+  <data name="LC_SAVEINSPECT_SLOT_EMPTY" xml:space="preserve">
+    <value>空白</value>
+  </data>
+  <data name="LC_SAVESEARCH_CONTAINER_LABEL" xml:space="preserve">
+    <value>{Label} ({NumMatches}匹配)</value>
+  </data>
+  <data name="LC_SAVESEARCH_GRP_PAL_CONTAINERS" xml:space="preserve">
+    <value>帕鲁盒子</value>
+  </data>
+  <data name="LC_SAVESEARCH_GRP_SEARCH_SETTINGS" xml:space="preserve">
+    <value>搜索设置</value>
+  </data>
+  <data name="LC_SAVESEARCH_SETTINGS_MIN_IVS" xml:space="preserve">
+    <value>最低个体值</value>
+  </data>
+  <data name="LC_SAVESEARCH_SETTINGS_RESET" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="LC_SAVEWINDOW_TAB_DETAILS" xml:space="preserve">
+    <value>详细</value>
+  </data>
+  <data name="LC_SAVEWINDOW_TAB_SEARCH" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="LC_SAVEWINDOW_TITLE" xml:space="preserve">
+    <value>存档查看器 - {SaveLabel}</value>
+  </data>
+  <data name="LC_SAVE_FILE" xml:space="preserve">
+    <value>保存文件</value>
+  </data>
+  <data name="LC_SAVE_FILE_RELOADING" xml:space="preserve">
+    <value>存档未缓存或缓存过期，读取内容中...</value>
+  </data>
+  <data name="LC_SAVE_FILE_RELOAD_DESCRIPTION" xml:space="preserve">
+    <value>保存的文件已被更改。单击重新加载最新存档。</value>
+  </data>
+  <data name="LC_SAVE_GAME" xml:space="preserve">
+    <value>游戏世界</value>
+  </data>
+  <data name="LC_SAVE_GAME_INVALID" xml:space="preserve">
+    <value>选择的保存文件无效！</value>
+  </data>
+  <data name="LC_SAVE_GAME_LBL" xml:space="preserve">
+    <value>{PlayerName} 在 {WorldName} 等级 {PlayerLevel} 第{DayNumber}天</value>
+  </data>
+  <data name="LC_SAVE_GAME_LBL_NO_METADATA" xml:space="preserve">
+    <value>{GameId} (无法读取元数据)</value>
+  </data>
+  <data name="LC_SAVE_GAME_LBL_SERVER" xml:space="preserve">
+    <value>{WorldName} 第{DayNumber}天</value>
+  </data>
+  <data name="LC_SAVE_GAME_REMOVE_BTN_LABEL" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="LC_SAVE_GAME_XBOX_INCOMPLETE" xml:space="preserve">
+    <value>Xbox保存文件不完整，功能仍可运行。关闭Palworld数分钟并重启Pal Calc软件，可以解决此问题。</value>
+  </data>
+  <data name="LC_SAVE_INSPECTOR_LOADING" xml:space="preserve">
+    <value>读取原始保存文件...</value>
+  </data>
+  <data name="LC_SAVE_LOCATION" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="LC_SAVE_LOCATION_LBL_STEAM" xml:space="preserve">
+    <value>Steam账号{UserId} - {NumValidSaves}个有效存档</value>
+  </data>
+  <data name="LC_SAVE_LOCATION_LBL_XBOX" xml:space="preserve">
+    <value>Xbox账号{UserId} - {NumValidSaves}个有效存档</value>
+  </data>
+  <data name="LC_SAVE_LOCATION_MANUAL" xml:space="preserve">
+    <value>手动添加的</value>
+  </data>
+  <data name="LC_SAVE_LOCATION_STEAM_EMPTY" xml:space="preserve">
+    <value>Steam</value>
+  </data>
+  <data name="LC_SAVE_LOCATION_XBOX_EMPTY" xml:space="preserve">
+    <value>Xbox</value>
+  </data>
+  <data name="LC_SAVE_LOCATION_XBOX_INSTALL_1" xml:space="preserve">
+    <value>未找到 Xbox 存档。Palworld需要用这些平台安装：</value>
+  </data>
+  <data name="LC_SAVE_LOCATION_XBOX_INSTALL_2" xml:space="preserve">
+    <value>Xbox 应用 / Game Pass。</value>
+  </data>
+  <data name="LC_SAVE_LOCATION_XBOX_INSTALL_3" xml:space="preserve">
+    <value>运行游戏时，存档会云同步到您的电脑。</value>
+  </data>
+  <data name="LC_SAVE_WARNING" xml:space="preserve">
+    <value>(!)</value>
+  </data>
+  <data name="LC_SOLVER_PAUSE" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="LC_SOLVER_RESUME" xml:space="preserve">
+    <value>恢复</value>
+  </data>
+  <data name="LC_SOLVER_RUN" xml:space="preserve">
+    <value>运行搜索</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_ALLOWED_BRED_PALS" xml:space="preserve">
+    <value>允许的中间繁育帕鲁</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_ALLOWED_WILD_PALS" xml:space="preserve">
+    <value>允许的野生帕鲁</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_MAX_BRED_IRRELEVANT_TRAITS" xml:space="preserve">
+    <value>允许子代杂质词条数</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_MAX_BRED_IRRELEVANT_TRAITS_DESCRIPTION" xml:space="preserve">
+    <value>目标帕鲁和中间体帕鲁允许的最大杂项词条数量。
+
+如果目标帕鲁还有空余的词条位置，大于“1”的值或可以缩短繁殖代数。
+
+增大数值会*指数级*增长检索时间。</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_MAX_BREEDING_STEPS" xml:space="preserve">
+    <value>繁殖代数限制</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_MAX_BREEDING_STEPS_DESCRIPTION" xml:space="preserve">
+    <value>孵化目标帕鲁的繁育代数限制。
+
+（此值通常应小于“最多求解次数”。）
+
+增大数值，Pal Calc遍历的方案越多，并且会相应增加所需时间。</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_MAX_CPU" xml:space="preserve">
+    <value>CPU核心数</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_MAX_CPU_DESCRIPTION" xml:space="preserve">
+    <value>求解程序使用的CPU核心数量。设置为0，即使用所有CPU核心。</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_MAX_INPUT_IRRELEVANT_TRAITS" xml:space="preserve">
+    <value>允许亲本杂质词条数</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_MAX_INPUT_IRRELEVANT_TRAITS_DESCRIPTION" xml:space="preserve">
+    <value>容忍配种亲本含有的杂项词条数量上限。
+
+较小的值能降低计算量，但也会错失一部分繁殖路径。
+
+增大数值会相应增加所需时间。</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_MAX_SOLVER_STEPS" xml:space="preserve">
+    <value>最多求解次数</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_MAX_SOLVER_STEPS_DESCRIPTION" xml:space="preserve">
+    <value>求解过程允许执行的最大次数。较大的值可能让Pal Calc找到更优化的配种路径。
+
+（Pal Calc会判断是否有必要额外搜索，可能在到达设定次数之前结束。）
+
+（此值通常等于或大于“繁殖代数限制”。）
+
+增大数值会相应增加所需时间。</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_MAX_WILD_PALS" xml:space="preserve">
+    <value>野生帕鲁数量</value>
+  </data>
+  <data name="LC_SOLVER_SETTINGS_MAX_WILD_PALS_DESCRIPTION" xml:space="preserve">
+    <value>繁殖路径里允许野生捕获的最大帕鲁数量。
+增大数值会相应增加所需时间，取决于目前拥有多少种帕鲁。</value>
+  </data>
+  <data name="LC_SOLVER_STATUS_BREEDING" xml:space="preserve">
+    <value>繁殖第{StepNum}代，已计算{WorkSize}对子代帕鲁可行性</value>
+  </data>
+  <data name="LC_SOLVER_STATUS_FINISHED" xml:space="preserve">
+    <value>已完成 (用时{Duration})</value>
+  </data>
+  <data name="LC_SOLVER_STATUS_INITIALIZING" xml:space="preserve">
+    <value>初始化中</value>
+  </data>
+  <data name="LC_SOLVER_STEP_STATUS_BREEDING" xml:space="preserve">
+    <value>已遍历{NumProcessed} / {WorkSize}对配种组合</value>
+  </data>
+  <data name="LC_SOLVER_STEP_STATUS_DONE" xml:space="preserve">
+    <value>总计遍历{TotalSize}对配种组合</value>
+  </data>
+  <data name="LC_SOURCE_PALS" xml:space="preserve">
+    <value>亲本帕鲁</value>
+  </data>
+  <data name="LC_STARTUP_LOADING" xml:space="preserve">
+    <value>加载中...</value>
+  </data>
+  <data name="LC_TARGET_PAL" xml:space="preserve">
+    <value>目标帕鲁</value>
+  </data>
+  <data name="LC_TARGET_PALS" xml:space="preserve">
+    <value>目标帕鲁</value>
+  </data>
+  <data name="LC_TRAITS_COUNT_EMPTY" xml:space="preserve">
+    <value>无词条</value>
+  </data>
+  <data name="LC_TRAITS_COUNT_RANDOM" xml:space="preserve">
+    <value>{NumRandom}随机</value>
+  </data>
+  <data name="LC_TRAITS_COUNT_UNRECOGNIZED" xml:space="preserve">
+    <value>{NumUnrecognized}无法识别</value>
+  </data>
+  <data name="LC_TRAITS_PRESETS" xml:space="preserve">
+    <value>预设</value>
+  </data>
+  <data name="LC_TRAITS_PRESETS_ADD" xml:space="preserve">
+    <value>保存词条为预设...</value>
+  </data>
+  <data name="LC_TRAITS_PRESETS_ADD_TITLE" xml:space="preserve">
+    <value>新预设命名</value>
+  </data>
+  <data name="LC_TRAITS_PRESETS_DELETE_BTN_DESCRIPTION" xml:space="preserve">
+    <value>删除预设</value>
+  </data>
+  <data name="LC_TRAITS_PRESETS_DELETE_MSG" xml:space="preserve">
+    <value>删除预设'{PresetName}'?</value>
+  </data>
+  <data name="LC_TRAITS_PRESETS_DELETE_TITLE" xml:space="preserve">
+    <value>删除预设</value>
+  </data>
+  <data name="LC_TRAITS_PRESETS_NAME" xml:space="preserve">
+    <value>命名</value>
+  </data>
+  <data name="LC_TRAITS_PRESETS_OVERWRITE_BTN_DESCRIPTION" xml:space="preserve">
+    <value>覆盖预设</value>
+  </data>
+  <data name="LC_TRAITS_PRESETS_OVERWRITE_MSG" xml:space="preserve">
+    <value>覆盖预设'{PresetName}'并改为目前选择的词条组合？</value>
+  </data>
+  <data name="LC_TRAITS_PRESETS_OVERWRITE_TITLE" xml:space="preserve">
+    <value>覆盖预设</value>
+  </data>
+  <data name="LC_TRAITS_PRESETS_RENAME_BTN_DESCRIPTION" xml:space="preserve">
+    <value>重命名预设</value>
+  </data>
+  <data name="LC_TRAITS_PRESETS_RENAME_TITLE" xml:space="preserve">
+    <value>重命名预设'{PresetName}'</value>
+  </data>
+  <data name="LC_UNKNOWN_GUILD" xml:space="preserve">
+    <value>未知公会</value>
+  </data>
+  <data name="LC_UNKNOWN_PLAYER" xml:space="preserve">
+    <value>未知玩家</value>
+  </data>
+  <data name="LC_UPDATE_AVAILABLE" xml:space="preserve">
+    <value>有更新版本可用！</value>
+  </data>
+  <data name="LC_VIEWING_CAGE_LABEL" xml:space="preserve">
+    <value>观赏笼({CageId})</value>
+  </data>
+  <data name="LC_WINDOW_TITLE" xml:space="preserve">
+    <value>Pal Calc</value>
+  </data>
+</root>

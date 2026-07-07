@@ -1,0 +1,38 @@
+﻿<adonisControls:AdonisWindow x:Class="PalCalc.UI.View.LoadingSaveFileModal"
+                             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                             xmlns:local="clr-namespace:PalCalc.UI.View"
+                             xmlns:vu="clr-namespace:PalCalc.UI.View.Utils"
+                             xmlns:itl="clr-namespace:PalCalc.UI.Localization"
+                             xmlns:adonisConverters="clr-namespace:AdonisUI.Converters;assembly=AdonisUI"
+                             xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                             xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+                             mc:Ignorable="d"
+                             Title="{itl:LocalizedText LC_POPUP_TITLE_LOADING_SAVE_FILE}"
+                             ShowInTaskbar="False"
+                             ResizeMode="NoResize"
+                             WindowStyle="ToolWindow"
+                             WindowStartupLocation="CenterOwner"
+                             PlaceTitleBarOverContent="True"
+                             TitleVisibility="Collapsed"
+                             IconVisibility="Collapsed"
+                             SizeToContent="WidthAndHeight"
+                             ShowCloseButton="False"
+                             Background="{DynamicResource {x:Static adonisUi:Brushes.Layer3BackgroundBrush}}"
+                             d:DataContext="{x:Type itl:ILocalizedText}"
+                             >
+    <StackPanel Orientation="Horizontal" vu:StackPanelExtensions.Spacing="10" Margin="15">
+        <TextBlock Text="{Binding Value}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <ContentControl ContentTemplate="{DynamicResource {x:Static adonisUi:Templates.LoadingCircle}}"
+                        Foreground="{DynamicResource {x:Static adonisUi:Brushes.ForegroundBrush}}"
+                        Width="20"
+                        Height="20"
+                        Focusable="False"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        />
+    </StackPanel>
+</adonisControls:AdonisWindow>

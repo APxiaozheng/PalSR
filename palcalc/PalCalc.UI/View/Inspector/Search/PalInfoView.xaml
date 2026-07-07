@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="PalCalc.UI.View.Inspector.Search.PalInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PalCalc.UI.View.Inspector"
+             xmlns:ivm="clr-namespace:PalCalc.UI.ViewModel.Inspector.Search"
+             xmlns:ivmg="clr-namespace:PalCalc.UI.ViewModel.Inspector.Search.Grid"
+             xmlns:mvm="clr-namespace:PalCalc.UI.ViewModel.Mapped"
+             xmlns:itl="clr-namespace:PalCalc.UI.Localization"
+             xmlns:v="clr-namespace:PalCalc.UI.View"
+             xmlns:vp="clr-namespace:PalCalc.UI.View.Pal"
+             xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+             xmlns:c="clr-namespace:PalCalc.UI.ViewModel.Converters"
+             mc:Ignorable="d"
+             Background="{DynamicResource {x:Static adonisUi:Brushes.Layer3BackgroundBrush}}"
+             d:DataContext="{x:Type ivmg:ContainerGridPalSlotViewModel}">
+    <UserControl.Resources>
+        <c:ValueVisibilityConverter x:Key="VVC" />
+    </UserControl.Resources>
+    <StackPanel Margin="10">
+        <WrapPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,25,0">
+                <Border Width="64" Height="64" CornerRadius="32" Background="{Binding Pal.IconBrush}" BorderBrush="White" BorderThickness="1" />
+                <StackPanel Margin="10,0,0,0" Orientation="Vertical" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Pal.Name.Value}" FontWeight="Bold" />
+                        <vp:PalGenderView Foreground="White" DataContext="{Binding PalInstance.Gender}" Height="16" />
+                    </StackPanel>
+                    <TextBlock>
+                        <Run Text="{itl:LocalizedText LC_COMMON_LEVEL}" />
+                        <Run Text="{Binding PalInstance.ModelObject.Level}" />
+                    </TextBlock>
+                    <TextBlock Visibility="{Binding PalInstance.ModelObject.IsOnExpedition, Converter={StaticResource VVC}}" Text="{itl:LocalizedText LC_SAVEINSPECT_ON_EXPEDITION}" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="0,0,25,0">
+                <StackPanel.Resources>
+                    <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+                        <Setter Property="Padding" Value="1" />
+                        <Setter Property="Foreground" Value="White" />
+                    </Style>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="Orientation" Value="Horizontal" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <Label HorizontalContentAlignment="Center" FontWeight="Bold" Content="{itl:LocalizedText LC_COMMON_IVS}" />
+
+                <StackPanel>
+                    <Label Width="60" Content="{itl:LocalizedText LC_COMMON_IV_HP}" />
+                    <Label Content="{Binding PalInstance.ModelObject.IV_HP}" />
+                </StackPanel>
+
+                <StackPanel>
+                    <Label Width="60" Content="{itl:LocalizedText LC_COMMON_IV_ATTACK}" />
+                    <Label Content="{Binding PalInstance.ModelObject.IV_Attack}" />
+                </StackPanel>
+
+                <StackPanel>
+                    <Label Width="60" Content="{itl:LocalizedText LC_COMMON_IV_DEFENSE}" />
+                    <Label Content="{Binding PalInstance.ModelObject.IV_Defense}" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,25,0">
+                <Label HorizontalAlignment="Center" FontWeight="Bold" Padding="1" Margin="0,0,0,4" Content="{itl:LocalizedText Code=LC_COMMON_EQUIPPED_ATTACK_SKILLS}" />
+                <ItemsControl ItemsSource="{Binding PalInstance.EquippedActiveSkills}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="mvm:ActiveSkillViewModel">
+                            <vp:ActiveSkillView DataContext="{Binding}" Width="175" Height="22" Margin="0,0,0,4" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,25,0">
+                <Label FontWeight="Bold" Padding="1" Margin="0,0,0,4" Content="{itl:LocalizedText Code=LC_COMMON_TRAITS}" />
+                <ItemsControl ItemsSource="{Binding PalInstance.PassiveSkills.Passives}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="mvm:PassiveSkillViewModel">
+                            <vp:PassiveSkillView DataContext="{Binding}" Width="175" Margin="0,0,5,5" Height="22" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </WrapPanel>
+        <StackPanel Margin="0,5,0,0">
+            <Label FontWeight="Bold" Padding="1" Content="{itl:LocalizedText Code=LC_COMMON_ALL_ATTACK_SKILLS}" />
+            <ItemsControl ItemsSource="{Binding PalInstance.ActiveSkills}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="mvm:ActiveSkillViewModel">
+                        <vp:ActiveSkillView DataContext="{Binding}" Width="175" Height="22" Margin="2" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

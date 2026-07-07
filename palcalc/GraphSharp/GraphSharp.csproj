@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<UseWPF>true</UseWPF>
+	<CETCompat>false</CETCompat> <!-- https://github.com/tylercamp/palcalc/issues/85 -->
+	<Nullable>disable</Nullable>
+	<NoWarn>0067</NoWarn>
+	<Platforms>x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="QuickGraph.NETStandard" Version="3.8.0" />
+  </ItemGroup>
+
+</Project>
