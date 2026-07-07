@@ -16,7 +16,7 @@ namespace PalCalc.UI.View.Inspector
 
             Loaded += (s, e) =>
             {
-                ((SaveViewerWindowViewModel)DataContext).Initialize();
+                ((SaveViewerWindowViewModel)DataContext).Initialize(Dispatcher);
             };
         }
 

@@ -1,3 +1,4 @@
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PalCalc.Model;
 using PalCalc.SaveReader;
@@ -14,14 +15,17 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace PalCalc.UI.ViewModel.Inspector
 {
-    public partial class SaveViewerWindowViewModel
+    public partial class SaveViewerWindowViewModel : ObservableObject
     {
         private static ILogger logger = Log.ForContext<SaveViewerWindowViewModel>();
+        private static PalDB db;
 
         private static SaveViewerWindowViewModel designerInstance = null;
         public static SaveViewerWindowViewModel DesignerInstance
@@ -40,59 +44,89 @@ namespace PalCalc.UI.ViewModel.Inspector
             }
         }
 
+        private AppSettings settings;
+
+        // Language switching
+        public List<TranslationLocaleViewModel> Locales { get; } =
+            Enum.GetValues<TranslationLocale>()
+                .Select(l => new TranslationLocaleViewModel(l))
+                .ToList();
+
+        // Save selection
         private SaveGameViewModel selectedSave;
         public SaveGameViewModel SelectedSave
         {
             get => selectedSave;
             set
             {
-                if (selectedSave != value)
+                if (SetProperty(ref selectedSave, value))
                 {
-                    selectedSave = value;
                     OnSelectedSaveChanged();
-                    OnPropertyChanged(nameof(SelectedSave));
                 }
             }
         }
 
         public ObservableCollection<SaveGameViewModel> AvailableSaves { get; set; } = new ObservableCollection<SaveGameViewModel>();
 
+        // Loading state
+        [ObservableProperty]
+        private bool isLoading;
+
+        [ObservableProperty]
+        private string loadingMessage;
+
+        // Search and Details
         private SearchViewModel search;
         public SearchViewModel Search
         {
             get => search;
-            set
-            {
-                search = value;
-                OnPropertyChanged(nameof(Search));
-            }
+            set => SetProperty(ref search, value);
         }
 
         private SaveDetailsViewModel details;
         public SaveDetailsViewModel Details
         {
             get => details;
-            set
-            {
-                details = value;
-                OnPropertyChanged(nameof(Details));
-            }
+            set => SetProperty(ref details, value);
         }
 
-        public ILocalizedText WindowTitle { get; private set; }
+        [ObservableProperty]
+        private ILocalizedText windowTitle = new HardCodedText("Pal Save Viewer");
 
         public ICommand RefreshCommand { get; }
-
         public IRelayCommand<IContainerGridSlotViewModel> DeleteSlotCommand { get; }
 
         public SaveViewerWindowViewModel()
         {
-            WindowTitle = new HardCodedText("Pal Save Viewer");
-            RefreshCommand = new CommunityToolkit.Mvvm.Input.RelayCommand(OnRefresh);
-            DeleteSlotCommand = new CommunityToolkit.Mvvm.Input.RelayCommand<IContainerGridSlotViewModel>(OnDeleteSlot);
+            RefreshCommand = new RelayCommand(OnRefresh);
+            DeleteSlotCommand = new RelayCommand<IContainerGridSlotViewModel>(OnDeleteSlot);
         }
 
-        public void Initialize()
+        public void Initialize(Dispatcher dispatcher)
+        {
+            // Initialize storage
+            Storage.Init();
+
+            // Load app settings
+            AppSettings.Current = settings = Storage.LoadAppSettings();
+            settings.SolverSettings ??= new SerializableSolverSettings();
+
+            // Set locale from saved settings
+            Translator.CurrentLocale = settings.Locale;
+            Translator.LocaleUpdated += () =>
+            {
+                if (settings.Locale != Translator.CurrentLocale)
+                {
+                    settings.Locale = Translator.CurrentLocale;
+                    Storage.SaveAppSettings(settings);
+                }
+            };
+
+            // Load save files
+            LoadAvailableSaves();
+        }
+
+        private void LoadAvailableSaves()
         {
             var availableSavesLocations = new List<ISavesLocation>();
             availableSavesLocations.AddRange(DirectSavesLocation.AllLocal);
@@ -100,7 +134,10 @@ namespace PalCalc.UI.ViewModel.Inspector
             try
             {
                 var xboxLocations = XboxSavesLocation.FindAll();
-                if (xboxLocations.Count > 0) availableSavesLocations.AddRange(xboxLocations);
+                if (xboxLocations.Count > 0)
+                    availableSavesLocations.AddRange(xboxLocations);
+                else
+                    availableSavesLocations.Add(new XboxSavesLocation());
             }
             catch { }
 
@@ -113,14 +150,41 @@ namespace PalCalc.UI.ViewModel.Inspector
                 }
             }
 
-            AvailableSaves = new ObservableCollection<SaveGameViewModel>(
-                allSaves.OrderByDescending(s => s.LastModified)
-            );
+            // Add manual saves from settings
+            var manualSaves = settings.ExtraSaveLocations
+                .Where(loc => System.IO.Directory.Exists(loc))
+                .Select(saveFolder => new StandardSaveGame(saveFolder))
+                .ToList();
+            foreach (var loc in settings.ExtraSaveLocations.Where(loc => !System.IO.Directory.Exists(loc)).ToList())
+            {
+                settings.ExtraSaveLocations.Remove(loc);
+            }
+            Storage.SaveAppSettings(settings);
 
+            // Add fake saves
+            var fakeSaves = settings.FakeSaveNames.Select(FakeSaveGame.Create).ToList();
+
+            allSaves = allSaves.OrderByDescending(s => s.LastModified).ToList();
+
+            AvailableSaves = new ObservableCollection<SaveGameViewModel>(allSaves);
             OnPropertyChanged(nameof(AvailableSaves));
 
+            // Auto-select save
             if (AvailableSaves.Count > 0)
-                SelectedSave = AvailableSaves[0];
+            {
+                if (settings.SelectedGameIdentifier != null)
+                {
+                    var match = AvailableSaves.FirstOrDefault(s => CachedSaveGame.IdentifierFor(s.Value) == settings.SelectedGameIdentifier);
+                    if (match != null)
+                        SelectedSave = match;
+                    else
+                        SelectedSave = AvailableSaves[0];
+                }
+                else
+                {
+                    SelectedSave = AvailableSaves[0];
+                }
+            }
         }
 
         private void OnSelectedSaveChanged()
@@ -130,15 +194,20 @@ namespace PalCalc.UI.ViewModel.Inspector
                 Search = null;
                 Details = null;
                 WindowTitle = new HardCodedText("Pal Save Viewer");
-                OnPropertyChanged(nameof(WindowTitle));
                 return;
             }
 
+            // Save selection for next startup
+            settings.SelectedGameIdentifier = CachedSaveGame.IdentifierFor(SelectedSave.Value);
+            Storage.SaveAppSettings(settings);
+
             try
             {
+                // Ensure cached save data is loaded
+                if (db == null) db = PalDB.LoadEmbedded();
                 var gameSettings = GameSettingsViewModel.Load(SelectedSave.Value).ModelObject;
-                WindowTitle = LocalizationCodes.LC_SAVEWINDOW_TITLE.Bind(SelectedSave.Label);
-                OnPropertyChanged(nameof(WindowTitle));
+
+                WindowTitle = new HardCodedText($"Pal Save Viewer - {SelectedSave.Label.Value}");
 
                 Search = new SearchViewModel(SelectedSave, gameSettings);
                 Details = new SaveDetailsViewModel(SelectedSave.ContainerLocation, SelectedSave.CachedValue);
@@ -146,24 +215,25 @@ namespace PalCalc.UI.ViewModel.Inspector
             catch (Exception ex)
             {
                 logger.Error(ex, "Error loading save data for {saveId}", CachedSaveGame.IdentifierFor(SelectedSave.Value));
-                MessageBox.Show($"Error loading save: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show($"Error loading save: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void OnRefresh()
         {
-            if (SelectedSave != null)
+            if (SelectedSave == null) return;
+
+            try
             {
-                try
-                {
-                    Storage.ReloadSave(SelectedSave.ContainerLocation, SelectedSave.Value, PalDB.LoadEmbedded(), GameSettingsViewModel.Load(SelectedSave.Value).ModelObject);
-                    OnSelectedSaveChanged();
-                }
-                catch (Exception ex)
-                {
-                    logger.Error(ex, "Error refreshing save data");
-                    MessageBox.Show($"Error refreshing save: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                if (db == null) db = PalDB.LoadEmbedded();
+                var gameSettings = GameSettingsViewModel.Load(SelectedSave.Value).ModelObject;
+                Storage.ReloadSave(SelectedSave.ContainerLocation, SelectedSave.Value, db, gameSettings);
+                OnSelectedSaveChanged();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex, "Error refreshing save data");
+                System.Windows.MessageBox.Show($"Error refreshing save: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -180,12 +250,6 @@ namespace PalCalc.UI.ViewModel.Inspector
 
             foreach (var cmd in subCommands)
                 cmd.Execute(slot);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
