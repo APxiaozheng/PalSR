@@ -146,13 +146,17 @@
                     <ComboBox ItemsSource="{Binding AvailableSaves}" 
                               SelectedItem="{Binding SelectedSave}"
                               Width="350"
-                              DisplayMemberPath="Label"
                               IsSynchronizedWithCurrentItem="True">
                         <ComboBox.Style>
                             <Style TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
                                 <Setter Property="IsEditable" Value="False" />
                             </Style>
                         </ComboBox.Style>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="mvm:SaveGameViewModel">
+                                <TextBlock Text="{Binding Label.Value}" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
                     </ComboBox>
                 </StackPanel>
 
